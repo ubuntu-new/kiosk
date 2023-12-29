@@ -34,7 +34,8 @@
                         size="100"
                         rounded="0"
                     >
-                        <v-img :src="product.img"></v-img>
+                        <v-img v-if="product.custom != 'yes' " :src="product.img"></v-img>
+                        <v-img v-else src="@/assets/img/half-half.png"></v-img>
                     </v-avatar>
                 </v-col>
 
@@ -44,6 +45,9 @@
                     </v-card-title>
                     <v-card-subtitle>
                         {{ product.qty }} X {{ product.price }} = {{ (product.qty*product.price).toFixed(2) }} Gel
+                    </v-card-subtitle>
+                    <v-card-subtitle v-for="(topping, index) in product.toppings" :key="index">
+                        {{ topping.name }} X {{ topping.qty }}
                     </v-card-subtitle>
                     <div class="qtyComponent-cart">
                         <div class="minusBtn-cart unselectable" :class="product.qty > 1 ? 'minusBtn' : 'hiddenAnimation'" @click="decreaseQty(product)">-</div>

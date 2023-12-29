@@ -1,5 +1,4 @@
 <template>
-
     <transition name="bounce">
         <div v-show="divModel" class="modal-container">
             <v-btn @click="openModal">
@@ -120,6 +119,7 @@
                 <img 
                     :src="product.img"
                     class="cart-item-image test-border"
+                    
                 />
             </v-col>
             <v-col class="bg-color-green test-border">Text</v-col>

@@ -20,6 +20,12 @@ import storeIndex from "./store"
 import VueSidePanel from 'vue3-side-panel';
 import 'vue3-side-panel/dist/vue3-side-panel.css'
 
+
+// Install
+// Vue.use(
+//     VueCssDoodle
+// );
+
 const store = createStore(storeIndex);
 // Plugins
 import { registerPlugins } from '@/plugins'

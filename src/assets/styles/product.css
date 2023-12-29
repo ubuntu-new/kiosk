@@ -1,3 +1,11 @@
+.doneButton{
+    background-color: red;
+    width: 300px;
+    height: 100px;
+}
+.modalTotal {
+    font-size: 22px;
+}
 .product-dialog {
     align-self: flex-end;
     margin-bottom: 0px;
@@ -32,6 +40,7 @@
 }
 
 .text-description {
+    padding: 5px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -44,8 +53,9 @@
 }
 
 .card-body {
-    padding: 0.5rem 0.5rem 0.2rem;
-    font-size: 10px;
+    /* padding: 0.5rem 0.5rem 0.2rem; */
+    padding: 20px;
+    font-size: 16px;
     min-height: 126px;
     height: max-content;
 }
@@ -62,38 +72,14 @@
     display: none;
 }
 
-.mainImage {
-    position: relative;
-    max-width: 410px;
-    margin: auto;
-}
-.insideImageXl {
-    position: absolute;
-    width: 360px;
-    z-index: 10;
-}
 
-.insideImageM {
-    position: absolute;
-    width: 270px;
-    z-index: 11;
-}
-.insideImageS {
-    position: absolute;
-    width: 200px;
-    z-index: 12;
-}
-.insideImageProduct {
-    position: relative;
-    width: 270px;
-    z-index: 11;
-}
 .orderTitle {
     text-align: center;
     width: 100%;
     margin-top: 20px;
     line-height: 120%;
 }
+
 
 .base > h6 {
     font-size: 0.83rem !important;

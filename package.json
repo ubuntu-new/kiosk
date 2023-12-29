@@ -10,11 +10,13 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@luxdamore/vue-css-doodle": "^1.0.1",
     "@mdi/font": "7.0.96",
     "@mui/material": "^5.14.11",
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
     "bootstrap-vue": "^2.23.1",
+    "css-doodle": "^0.37.3",
     "material-design-icons-iconfont": "^6.7.0",
     "roboto-fontface": "*",
     "vue": "^3.3.4",

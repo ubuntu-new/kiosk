@@ -16,7 +16,9 @@
         </ul>
       </div>
       <br>
-      <ProductModal :product="selectedItem" :productModal="productModal" @closeProductDialog="closeProductModal" :imgS="productImgS" :imgM="productImgM" :imgXL="productImgXl" :ingredientss="ingredients"  />
+      <ProductModal :toppingPrice="toppingPrice" :product="selectedItem" :cheeseLoversActive="cheeseLoversActive" 
+                    :productModal="productModal" @closeProductDialog="closeProductModal" :imgS="productImgS"
+                    :imgM="productImgM" :imgXL="productImgXl" :ingredients="ingredients" :ingredientsA="ingredientsA" :ingredientsB="ingredientsB" :sticks="sticksIngredients"  />
       <v-row>
         <ProductSingle v-for="(product, index) in sortedProducts" :key="index" :product="product"  @onProductSelect="productSelect" />
       </v-row>
@@ -24,7 +26,7 @@
     </div>
 
     <Cart :open="cartOpened" @openCheckout="openCheckoutModal"/>
-    <Constructor :activeConstructor="openTest" @closeConstructorDialog="toggleConstructor" />
+    <Constructor :activeConstructor="openTest" @closeConstructorDialog="toggleConstructor" :toppingPrice="toppingPrice" :ingredients="ingredients" :ingredientsA="ingredientsA" :ingredientsB="ingredientsB"/>
     <Checkout :activeCheckout="openCheckout" />
 </template>
 
@@ -44,7 +46,8 @@
 export default {
     data () {
         return {
-          hostname: 'http://new.ronnys.info/rest/web/index.php?r=v1/',
+          // hostname: 'http://new.ronnys.info/rest/web/index.php?r=v1/', // TEST
+          hostname: 'https://api.ronnyspizza.grena.ge/rest/web/index.php?r=v1/', // GRENA PRODUCTION
           TOKEN: "TodKtEjTTqj8HBVGmQPE3gW5TFY",
           dineOption: '',
           selectedItem: {},
@@ -63,6 +66,8 @@ export default {
           sortedProducts: [],
           cartOpened: false,
           openCheckout: false,
+          cheeseLoversActive: false,
+          size: 'm',
         }
     },
     computed: {
@@ -84,7 +89,10 @@ export default {
           this.openCheckout = !this.openCheckout;
         },
         toggleConstructor(){
-          // alert('bla');
+          this.ingredients = this.$store.getters.ingredientsList;
+          this.ingredientsA = this.$store.getters.ingredientsList;
+          this.ingredientsB = this.$store.getters.ingredientsList;
+          this.getIngredients();
           this.openTest = !this.openTest;
         },
         closeConstructor() {
@@ -106,6 +114,10 @@ export default {
           this.$store.dispatch('dineOption', option);
         },
         productSelect(product){
+          if(product.id == 56){
+            alert('Cheese Lovers');
+            this.cheeseLoversActive = true;
+          }
           console.log("selected Product: " + product);
           this.selectedItem = product;
           this.getProductRecipe();
@@ -121,7 +133,12 @@ export default {
           this.divModal = true;
         },
         closeProductModal(){
+          this.ingredients = this.$store.getters.ingredientsList;
+          this.ingredientsA = this.$store.getters.ingredientsList;
+          this.ingredientsB = this.$store.getters.ingredientsList;
           this.productModal = false;
+          this.getIngredients();
+          // this.cheeseLoversActive = false;
         },
         getProductRecipe(){
             const TOKEN = "TodKtEjTTqj8HBVGmQPE3gW5TFY";
@@ -154,7 +171,51 @@ export default {
                   this.selectedItem.toppings = [];
                 });
         },
+        getProductRecipeById(product){
+            const TOKEN = "TodKtEjTTqj8HBVGmQPE3gW5TFY";
+            var bodyFormData = new FormData();
+            bodyFormData.set("product_id", product.id);
+
+            axios
+                .request({
+                method: "post",
+                url: this.hostname + "products/get-reciept-by-product-id",
+                headers: {
+                    Authorization: "Bearer " + TOKEN,
+                },
+                data: bodyFormData,
+                })
+                .then((response) => {
+                  this.recipe = response.data;
+
+                  this.recipe.forEach((x) => {
+                      x.isDeleted = false;
+                      if (x.isPremium == "1") {
+                      x.price = this.toppingPrice[1].m;
+                      } else {
+                      x.price = this.toppingPrice[0].m;
+                      }
+                  });
+                  product.defaultToppings = this.recipe;
+                  // this.selectedItem.half1.defaultToppings = this.recipe;
+                  // this.selectedItem.half2.defaultToppings = this.recipe;
+                  product.toppings = [];
+                });
+        },
         getIngredients(){
+
+          axios
+          .request({
+            method: "post",
+            url: this.hostname + "products/get-ingredients-price",
+            headers: {
+              Authorization: "Bearer " + this.TOKEN,
+            },
+          })
+          .then((response) => {
+            this.toppingPrice = response.data;
+          });
+          
           axios
             .request({
               method: "post",
@@ -176,7 +237,7 @@ export default {
                   if (!x.price) {
                     x.price = 0;
                     x.qty = 0
-                  }
+                  } 
                   arr.push(x);
                 } else {
                   if (!x.price) {
@@ -184,15 +245,17 @@ export default {
                     x.qty = 0;
                   }
                   if (x.id != 31) {
+                    x.isDeleted = false;
                     sticks.push(x);
                   }
                 }
               });
-              this.$store.dispatch('addIngredientsList', arr);
+              
               this.sticksIngredients = JSON.parse(JSON.stringify(sticks));
               this.ingredients = JSON.parse(JSON.stringify(arr));
               this.ingredientsA = JSON.parse(JSON.stringify(arr));
               this.ingredientsB = JSON.parse(JSON.stringify(arr));
+              this.$store.dispatch('addIngredientsList', arr);
             });
         },
     },
@@ -214,6 +277,7 @@ export default {
 
         tempArr.forEach(x => {
           if(x.category_id == 3) {
+            this.getProductRecipeById(x);
             pizzaArr.push(x)
             x.half1 = {
               toppings: [],
@@ -223,7 +287,7 @@ export default {
               toppings: [],
               default: [],
             }
-            x.price = x.priceBySizes.m;
+            x.price = Number(x.priceBySizes.m);
           }
         });
 
@@ -235,17 +299,7 @@ export default {
         this.sortCat(0);
       });
 
-      axios
-      .request({
-        method: "post",
-        url: this.hostname + "products/get-ingredients-price",
-        headers: {
-          Authorization: "Bearer " + this.TOKEN,
-        },
-      })
-      .then((response) => {
-        this.toppingPrice = response.data;
-      });
+      
     },
     created(){
       this.sortedProducts = this.productList;

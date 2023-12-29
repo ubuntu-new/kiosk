@@ -25,6 +25,16 @@ const mutations = {
     'clear_cart'(state){
         state.cart = []
     },
+    'DELETE_CART'(state, id){
+        const currentCartToDelete = state.cart
+        const indexToDelete = currentCartToDelete.findIndex(cart => {
+            return cart.id == id
+        })
+
+        state.cart = [...currentCartToDelete.slice(0, indexToDelete), ...currentCartToDelete.slice(indexToDelete + 1)]
+        // state.totalAmount = totals(state.cart).amount
+        // state.totalQuantity = totals(state.cart).qty
+    },
 };
 
 const actions = {
@@ -45,6 +55,9 @@ const actions = {
     },
     clearCart({commit}){
         commit('clear_cart')
+    },
+    deleteCart({ commit }, id){
+        commit('DELETE_CART', id)
     },
 };
 
@@ -68,7 +81,7 @@ const getters = {
         var totalPrice = 0;
 
         state.cart.forEach(x => {
-            totalPrice = totalPrice + (x.price * x.qty)
+            totalPrice = totalPrice + (Number(x.price) * Number(x.qty))
         });
 
         return totalPrice.toFixed(2)
