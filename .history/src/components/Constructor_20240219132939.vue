@@ -18,7 +18,7 @@
                             />
                             <v-row>
                                 <div class="text-title">
-                                    {{ selectedItem.half1.name }}
+                                    {{ selectedItem.half1.name }}ssss
                                 </div>
                             </v-row>
                         </div>
@@ -123,7 +123,8 @@
                     >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
-                        >{{ defTopping.name }}</span>
+                        >{{ defTopping.name }}</span
+                      >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
                         v-if="

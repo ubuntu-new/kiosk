@@ -49,7 +49,7 @@
                             />
                             <v-row>
                                 <div class="text-title">
-                                   <h3> {{ product.name }} </h3>
+                                   <h3> {{ product.name }} </h3>სსსს
                                 </div>
                             </v-row>
                             <v-row>
@@ -123,7 +123,8 @@
                     >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
-                        >{{ defTopping.name }}</span>
+                        >{{ defTopping.name }}</span
+                      >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
                         v-if="

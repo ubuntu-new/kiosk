@@ -123,7 +123,7 @@
                     >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
-                        >{{ defTopping.name }}</span>
+                        >{{ defTopping.name }}</span> სსსს
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
                         v-if="

@@ -25,12 +25,12 @@
                         </div>
                         <div class="row orderTitle">
                                 <div class="mb-2">
-                                <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} &nbsp; </strong>  
+                                <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} </strong>  
                             <span class="orange" v-if="crust != 'original'">
-                                {{ crustFull }} &nbsp;
+                                {{ crustFull }}
                             </span>
                             <span class="orange" v-if="sauce != 'sauce'">
-                                {{ sauceFull }} &nbsp;
+                                {{ sauceFull }} 
                             </span >
                             </h4>
                         </div>
@@ -574,7 +574,7 @@
                         </v-row>
                         <div class="row orderTitle">
                             <div class="mb-2">
-                                <h4 class="base"><strong> {{ product.name }} &nbsp;</strong></h4>
+                                <h4 class="base"><strong> {{ product.name }} </strong></h4>
                                 <br>
                                 <h4>
                                     {{ countPrice }} GEL 
@@ -588,61 +588,82 @@
                         </div>
                         <div class="row orderTitle">
                             <div class="container">
-                                    <div class="row"
+                                    <div
                                         v-for="(ingredient, index) in sticks" :key="index"
+                                        class="mx-auto"
+                                        max-width="400"
                                     >
-                                    <div class="col-12">    
-                                        <table class="table mb-250 d-flex justify-center mb-6">
-                                            <tr>
-                                                <td class="ingredient-image">
-                                                    <span>
-                                                        <img src="../assets/img/ingredients.png" class="ingredientImage"/>
+<table ><tr><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td><div class="toppingName">Mozzarella <div class="toppingSettInner"><span class="toppimgPrice activeBla">4.30</span><span class="green"></span></div></div></td><><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Smoked Cheese <div class="toppingSettInner"><span class="toppimgPrice activeBla">4.30</span><span class="green"></span></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Pepperoni <div class="toppingSettInner"><span class="toppimgPrice">3.60</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Grilled Chicken <div class="toppingSettInner"><span class="toppimgPrice activeBla">3.60</span><span class="green"></span></div></div></td><td class="toppimgQty"><div class="qty"><span class="count w-plius">1</span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">BBQ Chicken <div class="toppingSettInner"><span class="toppimgPrice">3.60</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Salami <div class="toppingSettInner"><span class="toppimgPrice">3.60</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Smoked Ham <div class="toppingSettInner"><span class="toppimgPrice">3.60</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Italian Sausage <div class="toppingSettInner"><span class="toppimgPrice">3.60</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Anchovies <div class="toppingSettInner"><span class="toppimgPrice">3.60</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Mushrooms <div class="toppingSettInner"><span class="toppimgPrice">2.90</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr><tr class="ingredientsTable unselectable"><td class="ingredient-image"><span><img src="/src/assets/img/ingredients.png" class="ingredientImage"></span></td><td class="toppimgTitle"><div class="toppingName">Pineapple <div class="toppingSettInner"><span class="toppimgPrice">3.60</span><!--v-if--></div></div></td><td class="toppimgQty"><div class="qty"><span class="w-plius-empty"><span class="plusIcon">+</span></span></div></td></tr></table>
+
+
+
+
+                                    <table class="table mb-250">
+                                        <tr class="ingredientsTable unselectable">
+                                            <td class="toppimgTitle">23</td>
+                                            <td td class="toppimgQty">23</td>
+                                        </tr>
+                                    </table>
+                                        
+                                        <v-row  no-gutters>
+                                            <v-col
+                                            cols="8"
+                                            >
+                                            <v-card-title class="toppingName">
+                                                {{ ingredient.name }}
+                                            </v-card-title>
+                                            <div class="toppingSettInner">
+                                                <div v-if="ingredient.price > 0" class="toppimgPrice">
+                                                {{ ingredient.price }} Gel
+                                                </div>
+                                            
+                                                <v-card-subtitle v-else class="toppimgPrice">
+                                                free
+                                                </v-card-subtitle>
+                                            </div>
+                                            </v-col>
+                                            <v-col cols="4">
+                                                <div class="qty unselectable" v-if="ingredient.id == 24" @click="clickIncrement(ingredient)">
+                                                    <span
+                                                        class="count w-plius single-ingredient-icon"
+                                                        v-if="ingredient.qty > 0 "
+                                                    >
+                                                        {{ ingredient.qty }}
                                                     </span>
-                                                </td>
-                                                <td>
-                                                <div class="toppingName" style="width: 300px; text-align: left;">
-                                                    {{ ingredient.name }}
-                                                    <div class="toppingSettInner pt-3">
-                                                        <div v-if="ingredient.price > 0" class="toppimgPrice">
-                                                        {{ ingredient.price }}
-                                                        </div>
-                                                        <div v-else class="toppimgPrice">
-                                                        free
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                                </td>
-                                                <td>
-                                                    <div class="qty unselectable" v-if="ingredient.id == 24" @click="clickIncrement(ingredient)">
-                                                        <span class="count w-plius single-ingredient-icon"
-                                                            v-if="ingredient.qty > 0 ">
-                                                            {{ ingredient.qty }}
-                                                        </span>
-                                                        <span v-else class="w-plius-empty single-ingredient-icon">
-                                                            <span class="plusIcon">+</span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="qty unselectable" v-else-if="ingredient.isDeleted" @click="sticksIncrement(ingredient)">
-                                                        <span class="w-plius-empty single-ingredient-icon">
-                                                            <span class="plusIcon">+</span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="qty unselectable" v-else @click="sticksDecrement(ingredient)">
-                                                        <span
-                                                            class="count w-plius single-ingredient-icon"
-                                                            v-if="ingredient.qty > 0 || highlightDefToppings(ingredient)"
-                                                        >
-                                                            <v-icon>mdi-check</v-icon> 
-                                                        </span>
-                                                        <span v-else class="w-plius-empty single-ingredient-icon">
-                                                            <span class="plusIcon">+</span>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
+
+                                                    <span v-else class="w-plius-empty single-ingredient-icon">
+                                                        <span class="plusIcon">+</span>
+                                                    </span>
+                                                </div>
+                                                
+                                                <div class="qty unselectable" v-else-if="ingredient.isDeleted" @click="sticksIncrement(ingredient)">
+                                                    <!-- <span
+                                                        class="count w-plius single-ingredient-icon"
+                                                        v-if="ingredient.qty > 0 || highlightDefToppings(ingredient)"
+                                                    >
+                                                        <v-icon>mdi-check</v-icon>
+                                                    </span> -->
+
+                                                    <span class="w-plius-empty single-ingredient-icon">
+                                                        <span class="plusIcon">+</span>
+                                                    </span>
+                                                </div>
+                                                <div class="qty unselectable" v-else @click="sticksDecrement(ingredient)">
+                                                    <span
+                                                        class="count w-plius single-ingredient-icon"
+                                                        v-if="ingredient.qty > 0 || highlightDefToppings(ingredient)"
+                                                    >
+                                                        <v-icon>mdi-check</v-icon> 
+                                                    </span>
+
+                                                    <span v-else class="w-plius-empty single-ingredient-icon">
+                                                        <span class="plusIcon">+</span>
+                                                    </span>
+                                                </div>
+                                            </v-col>
+                                        </v-row>
+                                      
                                     </div>
-                                </div>
                                 </div>
                         </div>      
                 </v-card-text>
@@ -684,7 +705,7 @@
                     </v-row>
                     <div class="row orderTitle">
                         <div class="mb-2">
-                            <h1 class="base"><strong> {{ product.name }} &nbsp;</strong></h1>
+                            <h1 class="base"><strong> {{ product.name }} </strong></h1>
                             <br>
                             <h4 class="base"> {{ product.description }}</h4>
                             <br>

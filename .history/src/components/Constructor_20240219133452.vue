@@ -174,9 +174,9 @@
                       v-for="(topping, index) in selectedItem.toppings"
                       :key="index"
                     >
-                      <span v-if="topping.qty == 1">+ {{ topping.name }}</span>
+                      <span v-if="topping.qty == 1">+ {{ topping.name }}სსსს</span>
                       <span v-if="topping.qty != 1"
-                        >+ {{ topping.qty }} {{ topping.name }}</span
+                        >+ {{ topping.qty }} {{ topping.name }}სსს</span
                       >
                       <span class="pading-10"
                         >{{ (topping.price * topping.qty).toFixed(2) }}

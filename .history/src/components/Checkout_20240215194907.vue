@@ -69,19 +69,19 @@
                                             <h6>A/B Side: </h6>
                                         </v-card-subtitle>
                                         <v-card-subtitle v-for="(topping, index) in product.toppings" :key="index">
-                                            <h6>{{ topping.name }} X {{ topping.qty }} &nbsp;</h6>
+                                            <h6>{{ topping.name }} X {{ topping.qty }} </h6>
                                         </v-card-subtitle>
                                         <v-card-subtitle v-if="product.half1.toppings.length != 0">
                                             <h6> A Side: </h6>
                                         </v-card-subtitle>
                                         <v-card-subtitle v-for="(topping, index) in product.half1.toppings" :key="index">
-                                            <h6> {{ topping.name }} X {{ topping.qty }}&nbsp;</h6>
+                                            <h6> {{ topping.name }} X {{ topping.qty }}</h6>
                                         </v-card-subtitle>
                                         <v-card-subtitle v-if="product.half2.toppings.length != 0">
-                                            <h6> B Side: </h6>
+                                            <h6> B Side:</h6>
                                         </v-card-subtitle>
                                         <v-card-subtitle v-for="(topping, index) in product.half2.toppings" :key="index">
-                                            <h6>{{ topping.name }} X {{ topping.qty }} &nbsp;</h6>
+                                        {{ topping.name }} X {{ topping.qty }}
                                         </v-card-subtitle>
                                     </span>
                                 </v-col>
@@ -121,7 +121,7 @@
                         <v-col cols="12">
                             <v-card
                                     width="90%"
-                                    title="გადახდა სალაროსთან"
+                                    title="გადახდა ნაღდი ფულით"
                                     @click="payOrder('cash')"
                                     class="green white"
                                     >

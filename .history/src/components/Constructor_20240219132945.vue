@@ -123,7 +123,8 @@
                     >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
-                        >{{ defTopping.name }}</span>
+                        >{{ defTopping.name }}</span
+                      >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
                         v-if="

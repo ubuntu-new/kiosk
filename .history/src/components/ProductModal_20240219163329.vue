@@ -574,7 +574,7 @@
                         </v-row>
                         <div class="row orderTitle">
                             <div class="mb-2">
-                                <h4 class="base"><strong> {{ product.name }} &nbsp;</strong></h4>
+                                <h4 class="base"><strong> {{ product.name }} </strong></h4>
                                 <br>
                                 <h4>
                                     {{ countPrice }} GEL 
@@ -684,7 +684,7 @@
                     </v-row>
                     <div class="row orderTitle">
                         <div class="mb-2">
-                            <h1 class="base"><strong> {{ product.name }} &nbsp;</strong></h1>
+                            <h1 class="base"><strong> {{ product.name }} </strong></h1>
                             <br>
                             <h4 class="base"> {{ product.description }}</h4>
                             <br>

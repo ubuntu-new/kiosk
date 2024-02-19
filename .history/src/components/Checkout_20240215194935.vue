@@ -121,7 +121,7 @@
                         <v-col cols="12">
                             <v-card
                                     width="90%"
-                                    title="გადახდა სალაროსთან"
+                                    title="გადახდა ნაღდი ფულით"
                                     @click="payOrder('cash')"
                                     class="green white"
                                     >

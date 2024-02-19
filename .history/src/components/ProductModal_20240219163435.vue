@@ -27,10 +27,10 @@
                                 <div class="mb-2">
                                 <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} &nbsp; </strong>  
                             <span class="orange" v-if="crust != 'original'">
-                                {{ crustFull }} &nbsp;
+                                {{ crustFull }} &nbsp;;
                             </span>
                             <span class="orange" v-if="sauce != 'sauce'">
-                                {{ sauceFull }} &nbsp;
+                                {{ sauceFull }} &nbsp;;
                             </span >
                             </h4>
                         </div>

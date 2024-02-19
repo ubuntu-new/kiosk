@@ -25,12 +25,12 @@
                         </div>
                         <div class="row orderTitle">
                                 <div class="mb-2">
-                                <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} &nbsp; </strong>  
+                                <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} </strong>  
                             <span class="orange" v-if="crust != 'original'">
-                                {{ crustFull }} &nbsp;
+                                {{ crustFull }}
                             </span>
                             <span class="orange" v-if="sauce != 'sauce'">
-                                {{ sauceFull }} &nbsp;
+                                {{ sauceFull }} 
                             </span >
                             </h4>
                         </div>
@@ -574,7 +574,7 @@
                         </v-row>
                         <div class="row orderTitle">
                             <div class="mb-2">
-                                <h4 class="base"><strong> {{ product.name }} &nbsp;</strong></h4>
+                                <h4 class="base"><strong> {{ product.name }} </strong></h4>
                                 <br>
                                 <h4>
                                     {{ countPrice }} GEL 
@@ -593,22 +593,22 @@
                                     >
                                     <div class="col-12">    
                                         <table class="table mb-250 d-flex justify-center mb-6">
-                                            <tr>
+                                            <tr style="width: 600px;">
                                                 <td class="ingredient-image">
                                                     <span>
                                                         <img src="../assets/img/ingredients.png" class="ingredientImage"/>
                                                     </span>
                                                 </td>
                                                 <td>
-                                                <div class="toppingName" style="width: 300px; text-align: left;">
+                                                <div class="toppingName">
                                                     {{ ingredient.name }}
-                                                    <div class="toppingSettInner pt-3">
+                                                    <div class="toppingSettInner">
                                                         <div v-if="ingredient.price > 0" class="toppimgPrice">
-                                                        {{ ingredient.price }}
+                                                        {{ ingredient.price }} Gel
                                                         </div>
-                                                        <div v-else class="toppimgPrice">
+                                                        <v-card-subtitle v-else class="toppimgPrice">
                                                         free
-                                                        </div>
+                                                        </v-card-subtitle>
                                                     </div>
                                                 </div> 
                                                 </td>
@@ -684,7 +684,7 @@
                     </v-row>
                     <div class="row orderTitle">
                         <div class="mb-2">
-                            <h1 class="base"><strong> {{ product.name }} &nbsp;</strong></h1>
+                            <h1 class="base"><strong> {{ product.name }} </strong></h1>
                             <br>
                             <h4 class="base"> {{ product.description }}</h4>
                             <br>

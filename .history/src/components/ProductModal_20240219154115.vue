@@ -25,12 +25,12 @@
                         </div>
                         <div class="row orderTitle">
                                 <div class="mb-2">
-                                <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} &nbsp; </strong>  
+                                <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} </strong>  
                             <span class="orange" v-if="crust != 'original'">
-                                {{ crustFull }} &nbsp;
+                                {{ crustFull }}
                             </span>
                             <span class="orange" v-if="sauce != 'sauce'">
-                                {{ sauceFull }} &nbsp;
+                                {{ sauceFull }} 
                             </span >
                             </h4>
                         </div>
@@ -574,7 +574,7 @@
                         </v-row>
                         <div class="row orderTitle">
                             <div class="mb-2">
-                                <h4 class="base"><strong> {{ product.name }} &nbsp;</strong></h4>
+                                <h4 class="base"><strong> {{ product.name }} </strong></h4>
                                 <br>
                                 <h4>
                                     {{ countPrice }} GEL 
@@ -614,11 +614,11 @@
                                                 </td>
                                                 <td>
                                                     <div class="qty unselectable" v-if="ingredient.id == 24" @click="clickIncrement(ingredient)">
-                                                        <span class="count w-plius single-ingredient-icon"
+                                                        <span class="count w-plius "
                                                             v-if="ingredient.qty > 0 ">
                                                             {{ ingredient.qty }}
                                                         </span>
-                                                        <span v-else class="w-plius-empty single-ingredient-icon">
+                                                        <span v-else class="w-plius-empty">
                                                             <span class="plusIcon">+</span>
                                                         </span>
                                                     </div>
@@ -684,7 +684,7 @@
                     </v-row>
                     <div class="row orderTitle">
                         <div class="mb-2">
-                            <h1 class="base"><strong> {{ product.name }} &nbsp;</strong></h1>
+                            <h1 class="base"><strong> {{ product.name }} </strong></h1>
                             <br>
                             <h4 class="base"> {{ product.description }}</h4>
                             <br>
