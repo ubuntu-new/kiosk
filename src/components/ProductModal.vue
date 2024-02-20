@@ -627,14 +627,15 @@
                                                             <span class="plusIcon">+</span>
                                                         </span>
                                                     </div>
-                                                    <div class="qty unselectable" v-else @click="sticksDecrement(ingredient)">
+                                                    <div class="qty unselectable" v-else>
                                                         <span
+                                                            @click="sticksDecrement(ingredient)"
                                                             class="count w-plius single-ingredient-icon"
                                                             v-if="ingredient.qty > 0 || highlightDefToppings(ingredient)"
                                                         >
                                                             <v-icon>mdi-check</v-icon> 
                                                         </span>
-                                                        <span v-else class="w-plius-empty single-ingredient-icon">
+                                                        <span v-else class="w-plius-empty single-ingredient-icon" @click="sticksIncrement(ingredient)">
                                                             <span class="plusIcon">+</span>
                                                         </span>
                                                     </div>
@@ -798,7 +799,7 @@ export default {
             } else {
                 return this.product.price;
             }
-            },
+        },
     },
     methods: {
         changePrice() {
@@ -1040,33 +1041,33 @@ export default {
         },
 
         sticksIncrement(topping) {
-            this.sticks.forEach((x) => {
-                if (topping.id == x.id) {
-                x.isDeleted = false;
-                }
-            });
-            this.product.defaultToppings.forEach((t) => {
-                if (topping.id == t.id) {
-                t.name = t.name.slice(3);
-                t.isDeleted = false;
-                topping.isDeleted = false;
-                } else if (this.product.toppings.includes(topping)) {
-                this.$forceUpdate();
-                } else if (topping.id != t.id) {
-                if (this.highlightDefToppings(topping)) {
-                    this.$forceUpdate();
-                } else {
-                    topping.qty = 1;
-                    topping.count = 1;
-                    this.product.toppings.push(topping);
-                }
-
-                topping.isDeleted = false;
-                this.countChange++;
-                }
-            });
+        this.sticks.forEach((x) => {
+            if (topping.id == x.id) {
+            x.isDeleted = false;
+            }
+        });
+        this.product.defaultToppings.forEach((t) => {
+            if (topping.id == t.id) {
+            t.name = t.name.slice(3);
+            t.isDeleted = false;
+            topping.isDeleted = false;
+            } else if (this.product.toppings.includes(topping)) {
             this.$forceUpdate();
+            } else if (topping.id != t.id) {
+            if (this.highlightDefToppings(topping)) {
+                this.$forceUpdate();
+            } else {
+                topping.qty = 1;
+                topping.count = 1;
+                this.product.toppings.push(topping);
+            }
+
+            topping.isDeleted = false;
             this.countChange++;
+            }
+        });
+        this.$forceUpdate();
+        this.countChange++;
         },
 
         

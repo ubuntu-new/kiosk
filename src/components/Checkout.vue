@@ -140,6 +140,102 @@
                 </v-row>
             </div>
     </v-dialog>
+    <v-dialog
+        v-model="paymentDialog"
+        persistent
+        fullscreen
+        hide-overlay
+        transition="dialog-bottom-transition"
+        >
+        <img src="../assets/img/header.jpg" class="header-image-checkout" alt="Responsive image">
+        <div class="background-white h-100" style="overflow: auto;">
+            <v-card v-if="paymentStep == 1 && paymentMethod == 'card'">
+                <v-row>
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center"><h1>Logo here</h1></v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+                <v-row class="my-10">
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center"><h3>Total: {{ cartTotal }}</h3></v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+                <v-row class="my-10">
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center">
+                        <h3>
+                            გთხოვთ მიჰყვეთ ტერმინალზე გადახდის ინსტრუქციას!
+                        </h3>
+                        (ეს გვერდი იქამდეა ჩატვირთული სანამ ტერმინალი
+                         არ დააბრუნებს გადახდის სტატუსს, თუ წარმატებულია გადახდა უნდა 
+                         დაიბეჭდოს ჩეკი და მიენიჭოს შეკვეთის ნომერი, თუ არა უნდა დაბრუნდეს ჩექაუთის გვერძე)
+                    </v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+            </v-card>
+            <v-card v-if="paymentStep == 2 && paymentMethod == 'card'">
+                <v-row>
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center"><h1>Logo here</h1></v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+                <v-row class="my-10">
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center"><h3>შეკვეთა წარმატებულია!</h3></v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+                <v-row class="my-10">
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center">
+                        <h2>
+                            თქვენი შეკვეთის ნომერია: 
+                        </h2>
+                        <p/>
+                        <div class="orderId">
+                            69
+                        </div>
+                        <h3>
+                            გთხოვთ აიღოთ ჩეკი და დაელოდოთ ნომრის გამოძახებას ეკრანზე
+                        </h3>
+                    </v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+            </v-card>
+            <v-card v-if="paymentStep == 1 && paymentMethod == 'cash'">
+                <v-row>
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center"><h1>Logo here</h1></v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+                <v-row class="my-10">
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center"><h3>შეკვეთა წარმატებულია!</h3></v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+                <v-row class="my-10">
+                    <v-col cols="2">&nbsp;</v-col>
+                    <v-col cols="8" class="text-center">
+                        <h2>
+                            თქვენი შეკვეთის ნომერია: 
+                        </h2>
+                        <p/>
+                        <div class="orderId">
+                            69
+                        </div>
+                        <h1>Total: {{ cartTotal }} GEL</h1>
+                        <h3>
+                            შეკვეთის გადასახდელად გთხოვთ აიღოთ ჩეკი და გადაიხადოთ სალაროსთან 
+                        </h3>
+                    </v-col>
+                    <v-col cols="2">&nbsp;</v-col>
+                </v-row>
+            </v-card>
+            <v-footer>
+                <v-btn @click="changeStep">Change Step</v-btn>
+                <v-btn @click="paymentProcess">Pay</v-btn>
+            </v-footer>
+        </div>
+    </v-dialog>
 </v-app>
 </template>
 
@@ -150,6 +246,9 @@ export default {
     data () {
         return {
             openDialog: false,
+            paymentMethod: null,
+            paymentDialog: false,
+            paymentStep: 1,
         }
     },
     props: ['activeCheckout'],
@@ -162,6 +261,16 @@ export default {
         },
     },
     methods: {
+        changeStep(){
+            if(this.paymentStep == 1){
+                if(this.paymentMethod == 'card'){
+                    alert('ამ დროს უნდა დაიბეჭდოს ჩეკი სადაც ორდერს მინიჭებული ექნება იდ.');
+                }
+                this.paymentStep = 2;
+            } else if(this.paymentStep == 2){
+                this.paymentStep = 1;
+            }
+        },
         capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         },
@@ -169,8 +278,18 @@ export default {
             this.$emit('closeDialog');
             this.openDialog = false;
         },
+        paymentProcess(){
+            this.paymentDialog = false;
+            this.openDialog = true;
+        },
         payOrder(val){
-            alert("Total of - "+ this.cartTotal +" will be paid by " + val);
+            this.paymentStep = 1;
+            if(val == 'cash') {
+                alert('ამ დროს უნდა დაიბეჭდოს ჩეკი სადაც ორდერს მინიჭებული ექნება იდ.');
+            }
+            this.paymentMethod = val;
+            this.paymentDialog = true;
+            this.openDialog = false;
         },
         increaseQty(product){
             product.qty++;

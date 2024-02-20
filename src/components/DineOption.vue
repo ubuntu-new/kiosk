@@ -46,7 +46,7 @@
                                 payments
                             </span>
                         <div class="col-12">
-                            <strong>We only accept cart payment here.</strong>
+                            <strong>We only accept card payment here.</strong>
                             <br>
                             <span style="font-weight: 500;">Pay in cash? Please order at counter</span>
                         </div>
