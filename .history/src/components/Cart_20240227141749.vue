@@ -55,7 +55,7 @@
                         <h4> {{ product.name }}</h4>
                         </v-card-title>
                         <v-card-subtitle class="carttitle">
-                        {{ product.sizeFull }}, {{ capitalizeFirstLetter(product.crust) }} Crust, {{ capitalizeFirstLetter(product.sauce) }}
+                        <h4> {{ product.sizeFull }}, {{ capitalizeFirstLetter(product.crust) }} Crust, {{ capitalizeFirstLetter(product.sauce) }}</h4>
                         </v-card-subtitle>
                         <v-card-subtitle class="cartqty">
                             

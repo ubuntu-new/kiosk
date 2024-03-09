@@ -54,13 +54,13 @@
                         <v-card-title>
                         <h4> {{ product.name }}</h4>
                         </v-card-title>
-                        <v-card-subtitle class="carttitle">
-                        {{ product.sizeFull }}, {{ capitalizeFirstLetter(product.crust) }} Crust, {{ capitalizeFirstLetter(product.sauce) }}
+                        <v-card-subtitle>
+                        <h4> {{ product.sizeFull }}, {{ capitalizeFirstLetter(product.crust) }} Crust, {{ capitalizeFirstLetter(product.sauce) }}</h4>
                         </v-card-subtitle>
-                        <v-card-subtitle class="cartqty">
-                            
+                        <v-card-subtitle>
+                            <h6>
                             {{ product.qty }} X {{ Number(product.price).toFixed(2) }} = {{ (product.qty*product.price).toFixed(2) }} Gel
-                       
+                        </h6>
                         </v-card-subtitle>
                         <v-card-subtitle  class="racxa" v-if="product.toppings.length != 0" bold>
                             A/B Side
@@ -71,13 +71,13 @@
                         <v-card-subtitle class="racxa" v-if="product.half1.toppings.length != 0">
                             A Side
                         </v-card-subtitle>
-                        <v-card-subtitle class="racxa" v-for="(topping, index) in product.half1.toppings" :key="index">
+                        <v-card-subtitle v-for="(topping, index) in product.half1.toppings" :key="index">
                         {{ topping.name }} X {{ topping.qty }}
                         </v-card-subtitle>
                         <v-card-subtitle class="racxa" v-if="product.half2.toppings.length != 0">
                             B Side
                         </v-card-subtitle>
-                        <v-card-subtitle class="racxa" v-for="(topping, index) in product.half2.toppings" :key="index">
+                        <v-card-subtitle v-for="(topping, index) in product.half2.toppings" :key="index">
                         {{ topping.name }} X {{ topping.qty }}
                         </v-card-subtitle>
                     </span>

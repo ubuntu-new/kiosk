@@ -231,8 +231,8 @@
 
            
 
-         
-                <div class="container-fluid product-size-wrapper orderTitle">
+            <v-row>
+                <div >
                     <div class="row">
                         <div
                             class="col-md-4 btn1 btn-yellow pizzaSize"
@@ -326,7 +326,7 @@
                         </div>
                     </div>
                 </div>
-              
+            </v-row>    
             <v-row>
                         <v-col cols="4" offset="2">
                             <table class="table mb-250" v-if="half == 'w'">

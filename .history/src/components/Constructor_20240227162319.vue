@@ -232,7 +232,7 @@
            
 
          
-                <div class="container-fluid product-size-wrapper orderTitle">
+                <div class="container product-size-wrapper orderTitle">
                     <div class="row">
                         <div
                             class="col-md-4 btn1 btn-yellow pizzaSize"

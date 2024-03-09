@@ -31,7 +31,7 @@
                             <v-card-text>
                             <v-row  no-gutters>
                                 <v-col
-                                cols="3"
+                                cols="4"
                                 >
                                 <v-avatar
                                         size="180"
@@ -42,10 +42,10 @@
                                     </v-avatar>
                                 </v-col>
 
-                                <v-col cols="5" class="text-left">
+                                <v-col cols="6" class="text-left">
                                     <span v-if="product.category_id != 3">
-                                        <v-card-title>
-                                         <h4>{{ product.name }}</h4>
+                                        <v-card-title class="carttitle">
+                                         {{ product.name }}
                                         </v-card-title>
                                         <v-card-subtitle class="cartqty">
                                             {{ product.qty }} X {{ Number(product.price).toFixed(2) }} = {{ (product.qty*product.price).toFixed(2) }} Gel
@@ -81,7 +81,7 @@
                                         </v-card-subtitle>
                                     </span>
                                 </v-col>
-                                <v-col cols="4" class="h100 relative">
+                                <v-col cols="2" class="h100 relative">
                                     <div class="qtyComponent-cart kalati">
                                             <div class="minusBtn unselectable" :class="product.qty > 1 ? 'minusBtn' : 'hiddenAnimation'" @click="decreaseQty(product)">-</div>
                                             <div class="qtyNum unselectable">{{ product.qty }}</div>

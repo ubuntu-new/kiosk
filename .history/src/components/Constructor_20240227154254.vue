@@ -6,7 +6,7 @@
                 <v-icon @click="closeDialog">mdi-close</v-icon>
             <!-- </v-btn> -->
             <v-card-text>
-                <v-row class="product-size-wrapper orderTitle">
+                <v-row>
                     <v-col 
                     cols="3"
                     offset="2"
@@ -132,7 +132,7 @@
                           defTopping.id != 5
                         "
                       >
-                        - {{ defTopping.price }}
+                        - {{ defTopping.price }}aaaa
                       </span>
                       <v-icon v-if="defTopping.isDeleted"> local_pizza </v-icon>
                       <v-icon v-else> close </v-icon>
@@ -147,9 +147,9 @@
                       :key="index"
                       @click="deleteDefaultTopping(defTopping, 'b')"
                     >
-                      <h6
+                      <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
-                        >{{ defTopping.name }}</h6
+                        >{{ defTopping.name }}</span
                       >
                       <span
                         :class="defTopping.isDeleted ? 'deletedTopping' : ''"
@@ -170,13 +170,13 @@
                   </span>
                   <div class="wholeTopping">
                     <div
-                      class="d-flex justify-content-center halfToppings"
+                      class="d-flex justify-content-between halfToppings"
                       v-for="(topping, index) in selectedItem.toppings"
                       :key="index"
                     >
-                      <h6 v-if="topping.qty == 1">+ {{ topping.name }}</h6>
-                      <h6 v-if="topping.qty != 1"
-                        >+ {{ topping.qty }} {{ topping.name }}</h6
+                      <span v-if="topping.qty == 1">+ {{ topping.name }}</span>
+                      <span v-if="topping.qty != 1"
+                        >+ {{ topping.qty }} {{ topping.name }}</span
                       >
                       <span class="pading-10"
                         >{{ (topping.price * topping.qty).toFixed(2) }}
@@ -189,15 +189,15 @@
                     <h5> A Side</h5>
                     </span>
                     <div
-                      class="d-flex justify-content-center halfToppings"
+                      class="d-flex justify-content-between halfToppings"
                       v-for="(topping, index) in selectedItem.half1.toppings"
                       :key="index"
                     >
-                      <h6 v-if="topping.qty == 1"
-                        >A + {{ topping.name }}</h6
+                      <span v-if="topping.qty == 1"
+                        >A + {{ topping.name }}</span
                       >
-                      <h6 v-if="topping.qty != 1"
-                        >A + {{ topping.qty }} {{ topping.name }}</h6
+                      <span v-if="topping.qty != 1"
+                        >A + {{ topping.qty }} {{ topping.name }}</span
                       >
                       <span>
                         {{ (topping.price * topping.qty).toFixed(2) }}
@@ -210,15 +210,15 @@
                       <h5>B Side</h5>
                     </span>
                     <div
-                      class="d-flex justify-content-center halfToppings"
+                      class="d-flex justify-content-between halfToppings"
                       v-for="(topping, index) in selectedItem.half2.toppings"
                       :key="index"
                     >
-                      <h6 v-if="topping.qty == 1"
-                        >B + {{ topping.name }}</h6
+                      <span v-if="topping.qty == 1"
+                        >B + {{ topping.name }}</span
                       >
-                      <h6 v-if="topping.qty != 1"
-                        >B + {{ topping.qty }} {{ topping.name }}</h6
+                      <span v-if="topping.qty != 1"
+                        >B + {{ topping.qty }} {{ topping.name }}</span
                       >
                       <span>
                         {{ (topping.price * topping.qty).toFixed(2) }}
@@ -229,10 +229,8 @@
               </div>
             </div>
 
-           
-
-         
-                <div class="container-fluid product-size-wrapper orderTitle">
+            <v-row>
+                <div class="product-size-wrapper orderTitle">
                     <div class="row">
                         <div
                             class="col-md-4 btn1 btn-yellow pizzaSize"
@@ -326,7 +324,7 @@
                         </div>
                     </div>
                 </div>
-              
+            </v-row>    
             <v-row>
                         <v-col cols="4" offset="2">
                             <table class="table mb-250" v-if="half == 'w'">

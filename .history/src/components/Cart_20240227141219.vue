@@ -55,12 +55,12 @@
                         <h4> {{ product.name }}</h4>
                         </v-card-title>
                         <v-card-subtitle class="carttitle">
-                        {{ product.sizeFull }}, {{ capitalizeFirstLetter(product.crust) }} Crust, {{ capitalizeFirstLetter(product.sauce) }}
+                        <h4> {{ product.sizeFull }}, {{ capitalizeFirstLetter(product.crust) }} Crust, {{ capitalizeFirstLetter(product.sauce) }}</h4>
                         </v-card-subtitle>
                         <v-card-subtitle class="cartqty">
-                            
+                            <h6>
                             {{ product.qty }} X {{ Number(product.price).toFixed(2) }} = {{ (product.qty*product.price).toFixed(2) }} Gel
-                       
+                        </h6>
                         </v-card-subtitle>
                         <v-card-subtitle  class="racxa" v-if="product.toppings.length != 0" bold>
                             A/B Side

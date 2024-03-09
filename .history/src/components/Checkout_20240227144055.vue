@@ -31,7 +31,7 @@
                             <v-card-text>
                             <v-row  no-gutters>
                                 <v-col
-                                cols="3"
+                                cols="4"
                                 >
                                 <v-avatar
                                         size="180"
@@ -42,23 +42,23 @@
                                     </v-avatar>
                                 </v-col>
 
-                                <v-col cols="5" class="text-left">
+                                <v-col cols="6" class="text-left">
                                     <span v-if="product.category_id != 3">
-                                        <v-card-title>
-                                         <h4>{{ product.name }}</h4>
+                                        <v-card-title class="carttitle">
+                                         {{ product.name }}
                                         </v-card-title>
-                                        <v-card-subtitle class="cartqty">
+                                        <v-card-subtitle>
                                             {{ product.qty }} X {{ Number(product.price).toFixed(2) }} = {{ (product.qty*product.price).toFixed(2) }} Gel
                                         </v-card-subtitle>
                                     </span>
                                     <span v-else>
-                                        <v-card-title>
-                                         <h4>{{ product.name }}</h4>
+                                        <v-card-title class="carttitle">
+                                         {{ product.name }}
                                         </v-card-title>
-                                        <v-card-subtitle class="carttitle">
+                                        <v-card-subtitle >
                                          {{ product.sizeFull }}, {{ capitalizeFirstLetter(product.crust) }} Crust, {{ capitalizeFirstLetter(product.sauce) }}
                                         </v-card-subtitle>
-                                        <v-card-subtitle class="cartqty">
+                                        <v-card-subtitle>
                                             {{ product.qty }} X {{ Number(product.price).toFixed(2) }} = {{ (product.qty*product.price).toFixed(2) }} ₾
                                         </v-card-subtitle>
                                         <v-card-subtitle class="racxa" v-if="product.toppings.length != 0" bold>
@@ -70,18 +70,18 @@
                                         <v-card-subtitle class="racxa" v-if="product.half1.toppings.length != 0">
                                              A Side: 
                                         </v-card-subtitle>
-                                        <v-card-subtitle class="racxa" v-for="(topping, index) in product.half1.toppings" :key="index">
+                                        <v-card-subtitle v-for="(topping, index) in product.half1.toppings" :key="index">
                                              {{ topping.name }} X {{ topping.qty }}&nbsp;
                                         </v-card-subtitle>
-                                        <v-card-subtitle class="racxa" v-if="product.half2.toppings.length != 0">
+                                        <v-card-subtitle v-if="product.half2.toppings.length != 0">
                                              B Side: 
                                         </v-card-subtitle>
-                                        <v-card-subtitle class="racxa" v-for="(topping, index) in product.half2.toppings" :key="index">
+                                        <v-card-subtitle v-for="(topping, index) in product.half2.toppings" :key="index">
                                             {{ topping.name }} X {{ topping.qty }} &nbsp;
                                         </v-card-subtitle>
                                     </span>
                                 </v-col>
-                                <v-col cols="4" class="h100 relative">
+                                <v-col cols="2" class="h100 relative">
                                     <div class="qtyComponent-cart kalati">
                                             <div class="minusBtn unselectable" :class="product.qty > 1 ? 'minusBtn' : 'hiddenAnimation'" @click="decreaseQty(product)">-</div>
                                             <div class="qtyNum unselectable">{{ product.qty }}</div>

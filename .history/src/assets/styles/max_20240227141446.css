@@ -430,23 +430,21 @@ hr {
 {
   height: 100px !important;
 }
-.v-card-subtitle.racxa, .v-card-title.racxa
+.v-card-subtitle.racxa
 {
-  font-size: 1.2rem;
+  font-size: 16px;
   padding-bottom: 6px;
   font-weight: 500;
 }
-.v-card-subtitle.carttitle, .v-card-title.carttitle
+.v-card-subtitle.carttitle
 {
-  font-size: 1.2rem;
-  margin: 0;
+  font-size: 18px;
   padding-bottom: 6px;
   font-weight: 500;
 }
-.v-card-subtitle.cartqty, .v-card-title.cartqty
+.v-card-subtitle.cartqty
 {
+  font-size: 18px;
   padding-bottom: 6px;
   font-weight: 500;
-  font-size: 1.2rem;
-    margin: 0;
 }

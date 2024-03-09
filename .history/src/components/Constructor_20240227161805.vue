@@ -101,7 +101,7 @@
               <div class="md-12">
                 <v-card class="pa-2">
                   <div class="product-info mb-2">
-                  <h5 class="base">{{ sizeFull }}  <strong> {{ selectedItem.name }} </strong>  
+                  <h5 class="base">{{ sizeFull }} zzzzz <strong> {{ selectedItem.name }} </strong>  
                     <span class="orange" v-if="crust != 'original'">
                         {{ crustFull }};
                     </span>
@@ -229,10 +229,8 @@
               </div>
             </div>
 
-           
-
-         
-                <div class="container-fluid product-size-wrapper orderTitle">
+            <v-row>
+                <div class="product-size-wrapper orderTitle">
                     <div class="row">
                         <div
                             class="col-md-4 btn1 btn-yellow pizzaSize"
@@ -326,7 +324,7 @@
                         </div>
                     </div>
                 </div>
-              
+            </v-row>    
             <v-row>
                         <v-col cols="4" offset="2">
                             <table class="table mb-250" v-if="half == 'w'">
