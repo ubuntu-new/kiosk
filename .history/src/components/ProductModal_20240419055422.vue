@@ -5,208 +5,257 @@
                 <v-icon  @click="closeDialog" size="x-large">mdi-close</v-icon>
                 <v-card-text class="v-container"> 
                     <v-row no-gutters>
-                        <v-col cols="5">
+                        <v-col>
                             <v-sheet class="pa-2 ma-2">
-                                <v-row>
-                                    <div class="backgraundi orderTitle">
-                                        <img src="../assets/img/pizzaBack.png" class="mainImage" />
-                                        <img
-                                            :src="imgS"
-                                            class="insideImageS"
-                                            :class="{ hidden: size !== 's' }"
-                                        />
-                                        <img
-                                            :src="imgM"
-                                            class="insideImageM"
-                                            :class="{ hidden: size !== 'm' }"
-                                        />
-                                        <img
-                                            :src="imgXL"
-                                            class="insideImageXl"
-                                            :class="{ hidden: size !== 'xl' }"
-                                        />
-                                    </div>
-                                    <div class="row orderTitle">
-                                            <div class="mb-2">
-                                            <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} &nbsp; </strong>  
-                                        <span class="orange" v-if="crust != 'original'">
-                                            {{ crustFull }} &nbsp;
-                                        </span>
-                                        <span class="orange" v-if="sauce != 'sauce'">
-                                            {{ sauceFull }} &nbsp;
-                                        </span >
-                                        </h4>
-                                    </div>
-                                    <ul class="defToppingebi">
-                                        <li
-                                        class="halfToppings"
-                                        v-for="(
-                                            defTopping, index
-                                        ) in product.defaultToppings"
-                                        :key="index"
-                                        @click="deleteDefaultTopping(defTopping)"
-                                        >
-                                        <h6
-                                            :class="
-                                            defTopping.isDeleted ? 'deletedTopping' : ''
-                                            "
-                                            >{{ defTopping.name }}
-                                    </h6>
-
-                                        <span
-                                            :class="
-                                            defTopping.isDeleted ? 'deletedTopping' : ''
-                                            "
-                                            v-if="
-                                            defTopping.isDeleted &&
-                                            product.is_special == 0 &&
-                                            defTopping.id != 5
-                                            "
-                                        >
-                                            - {{ defTopping.price }}
-                                        </span>
-                                        <v-icon v-if="defTopping.isDeleted">
-                                            local_pizza
-                                        </v-icon>
-                                        <v-icon> mdi-close </v-icon>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="qtyComponent orderTitle">
-                                    <div class="minusBtn unselectable" :class="productQty > 1 ? 'minusBtn' : 'hiddenAnimation'" @click="decreaseQty">-</div>
-                                    <div class="qtyNum unselectable">{{ productQty }}</div>
-                                    <div class="plusBtn unselectable" @click="increaseQty">+</div>
-                                </div>
-                            </v-row>
+                               asdas
                             </v-sheet>
-                        </v-col>
-                        <v-col cols="7">
-                            <v-sheet class="pa-2 ma-2">
-                                <v-row>
-                                    <div class="product-size-wrapper orderTitle" style="position:relative; top:60px;">
-                                        <div class="row ">
-                                            <div
-                                                class="col-md-4  btn1 btn-yellow pizzaSize transition"
-                                                @click="sizeBtn('s')"
-                                                :class="{ active: size === 's', btn_inactive : cheeseLoversActive }"
-                                            >
-                                            <span class="settingtxt">
-                                                Small
-                                            </span>
-                                            </div>
-                                            <div
-                                                class="col-md-4 btn1 btn-yellow pizzaSize transition"
-                                                @click="sizeBtn('m')"
-                                                :class="{ active: size === 'm' }"
-                                            >
-                                            <span class="settingtxt">
-                                                Medium
-                                                </span>
-                                            </div>
-                                            <div
-                                                class="col-md-4 btn1 btn-yellow pizzaSize transition"
-                                                @click="sizeBtn('xl')"
-                                                :class="{ active: size === 'xl' , btn_inactive : cheeseLoversActive}"
-                                            >
-                                            <span class="settingtxt">
-                                                XL
-                                                </span>
-                                        </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="col-md-6 btn btn-yellow crustSize transition"
-                                                @click="changeCrust('original')"
-                                                :class="{ active: crust === 'original' }"
-                                            >
-                                            <span class="settingtxt">
-                                                Original
-                                                </span>
-                                            </div>
-                                            <div
-                                                class="col-md-6 btn btn-yellow crustSize transition"
-                                                @click="changeCrust('thin')"
-                                                :class="{ active: crust === 'thin' }"
-                                            >
-                                            <span class="settingtxt">
-                                                Thin
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="col-sm-3 btn btn-yellow sauceSize transition"
-                                                @click="changeSauce('sauce')"
-                                                :class="{ active: sauce === 'sauce' }"
-                                            >
-                                            <span class="settingtxt">
-                                                Original
-                                                </span>
-                                            </div>
-                                            <div
-                                                class="col-sm-3 btn btn-yellow sauceSize transition"
-                                                @click="changeSauce('less sauce')"
-                                                :class="{ active: sauce === 'less sauce' }"
-                                            >
-                                            <span class="settingtxt">
-                                                Less Sauce
-                                                </span>
-                                            </div>
-                                            <div
-                                                class="col-sm-3 btn btn-yellow sauceSize transition"
-                                                @click="changeSauce('more sauce')"
-                                                :class="{ active: sauce === 'more sauce' }"
-                                            >
-                                            <span class="settingtxt">
-                                            Heavy Sauce
-                                            </span>
-                                            </div>
-                                            <div
-                                                class="col-sm-3 btn btn-yellow sauceSize transition"
-                                                @click="changeSauce('no sauce')"
-                                                :class="{ active: sauce === 'no sauce' }"
-                                            >
-                                            <span class="settingtxt">
-                                                No Sauce
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div
-                                                class="col-md-4 btn btn-yellow halfSize transition"
-                                                @click="half = 'a'"
-                                                :class="{ active: half === 'a'}"
-                                            >
-                                            <span class="settingtxt">
-                                                A Side
-                                                </span>
-                                            </div>
-                                            <div
-                                                class="col-md-4 btn btn-yellow halfSize transition" 
-                                                @click="half = 'b'"
-                                                :class="{ active: half === 'b' }"
-                                            >
-                                            <span class="settingtxt">
-                                                B Side
-                                                </span>
-                                            </div>
-                                            <div
-                                                class="col-md-4 btn btn-yellow halfSize transition"
-                                                @click="half = 'w'"
-                                                :class="{ active: half === 'w' }"
-                                            >
-                                            <span class="settingtxt">
-                                                A/B SIDE
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </v-row>
+                            </v-col>
+                            
+                            <div class="row">
+                                <div
+                                    class="col-md-6 btn btn-yellow crustSize transition"
+                                    @click="changeCrust('original')"
+                                    :class="{ active: crust === 'original' }"
+                                >
+                                    Original
+                                </div>
+                                <div
+                                    class="col-md-6 btn btn-yellow crustSize transition"
+                                    @click="changeCrust('thin')"
+                                    :class="{ active: crust === 'thin' }"
+                                >
+                                    Thin
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('sauce')"
+                                    :class="{ active: sauce === 'sauce' }"
+                                >
+                                    Original Sauce
+                                </div>
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('less sauce')"
+                                    :class="{ active: sauce === 'less sauce' }"
+                                >
+                                    Less Sauce
+                                </div>
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('more sauce')"
+                                    :class="{ active: sauce === 'more sauce' }"
+                                >
+                                Heavy Sauce
+                                </div>
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('no sauce')"
+                                    :class="{ active: sauce === 'no sauce' }"
+                                >
+                                    No Sauce
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div
+                                    class="col-md-4 btn btn-yellow halfSize transition"
+                                    @click="half = 'a'"
+                                    :class="{ active: half === 'a'}"
+                                >
+                                    A Side
+                                </div>
+                                <div
+                                    class="col-md-4 btn btn-yellow halfSize transition" 
+                                    @click="half = 'b'"
+                                    :class="{ active: half === 'b' }"
+                                >
+                                    B Side
+                                </div>
+                                <div
+                                    class="col-md-4 btn btn-yellow halfSize transition"
+                                    @click="half = 'w'"
+                                    :class="{ active: half === 'w' }"
+                                >
+                                    A/B SIDE
+                                </div>
+                            </div>
+                        </div>
+                    </v-row>
                             </v-sheet>
                         </v-col>
                         </v-row>
                 </v-card-text>
                 <v-card-text class="v-container">
+                    <v-row>
+                        <div class="backgraundi orderTitle">
+                            <img src="../assets/img/pizzaBack.png" class="mainImage" />
+                            <img
+                                :src="imgS"
+                                class="insideImageS"
+                                :class="{ hidden: size !== 's' }"
+                            />
+                            <img
+                                :src="imgM"
+                                class="insideImageM"
+                                :class="{ hidden: size !== 'm' }"
+                            />
+                            <img
+                                :src="imgXL"
+                                class="insideImageXl"
+                                :class="{ hidden: size !== 'xl' }"
+                            />
+                        </div>
+                        <div class="row orderTitle">
+                                <div class="mb-2">
+                                <h4 class="base">{{ sizeFull }}  <strong> {{ product.name }} &nbsp; </strong>  
+                            <span class="orange" v-if="crust != 'original'">
+                                {{ crustFull }} &nbsp;
+                            </span>
+                            <span class="orange" v-if="sauce != 'sauce'">
+                                {{ sauceFull }} &nbsp;
+                            </span >
+                            </h4>
+                        </div>
+                        <ul class="defToppingebi">
+                            <li
+                            class="halfToppings"
+                            v-for="(
+                                defTopping, index
+                            ) in product.defaultToppings"
+                            :key="index"
+                            @click="deleteDefaultTopping(defTopping)"
+                            >
+                            <h6
+                                :class="
+                                defTopping.isDeleted ? 'deletedTopping' : ''
+                                "
+                                >{{ defTopping.name }}
+                        </h6>
+
+                            <span
+                                :class="
+                                defTopping.isDeleted ? 'deletedTopping' : ''
+                                "
+                                v-if="
+                                defTopping.isDeleted &&
+                                product.is_special == 0 &&
+                                defTopping.id != 5
+                                "
+                            >
+                                - {{ defTopping.price }}
+                            </span>
+                            <v-icon v-if="defTopping.isDeleted">
+                                local_pizza
+                            </v-icon>
+                            <v-icon> mdi-close </v-icon>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="qtyComponent orderTitle">
+                        <div class="minusBtn unselectable" :class="productQty > 1 ? 'minusBtn' : 'hiddenAnimation'" @click="decreaseQty">-</div>
+                        <div class="qtyNum unselectable">{{ productQty }}</div>
+                        <div class="plusBtn unselectable" @click="increaseQty">+</div>
+                    </div>
+
+                        
+                </v-row>
+                    <v-row>
+                        <div class="product-size-wrapper orderTitle">
+                            <div class="row ">
+                                <div
+                                    class="col-md-4  btn1 btn-yellow pizzaSize transition"
+                                    @click="sizeBtn('s')"
+                                    :class="{ active: size === 's', btn_inactive : cheeseLoversActive }"
+                                >
+                                    Small
+                                </div>
+                                <div
+                                    class="col-md-4 btn1 btn-yellow pizzaSize transition"
+                                    @click="sizeBtn('m')"
+                                    :class="{ active: size === 'm' }"
+                                >
+                                    Medium
+                                </div>
+                                <div
+                                    class="col-md-4 btn1 btn-yellow pizzaSize transition"
+                                    @click="sizeBtn('xl')"
+                                    :class="{ active: size === 'xl' , btn_inactive : cheeseLoversActive}"
+                                >
+                                    XL
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div
+                                    class="col-md-6 btn btn-yellow crustSize transition"
+                                    @click="changeCrust('original')"
+                                    :class="{ active: crust === 'original' }"
+                                >
+                                    Original
+                                </div>
+                                <div
+                                    class="col-md-6 btn btn-yellow crustSize transition"
+                                    @click="changeCrust('thin')"
+                                    :class="{ active: crust === 'thin' }"
+                                >
+                                    Thin
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('sauce')"
+                                    :class="{ active: sauce === 'sauce' }"
+                                >
+                                    Original Sauce
+                                </div>
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('less sauce')"
+                                    :class="{ active: sauce === 'less sauce' }"
+                                >
+                                    Less Sauce
+                                </div>
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('more sauce')"
+                                    :class="{ active: sauce === 'more sauce' }"
+                                >
+                                Heavy Sauce
+                                </div>
+                                <div
+                                    class="col-sm-3 btn btn-yellow sauceSize transition"
+                                    @click="changeSauce('no sauce')"
+                                    :class="{ active: sauce === 'no sauce' }"
+                                >
+                                    No Sauce
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div
+                                    class="col-md-4 btn btn-yellow halfSize transition"
+                                    @click="half = 'a'"
+                                    :class="{ active: half === 'a'}"
+                                >
+                                    A Side
+                                </div>
+                                <div
+                                    class="col-md-4 btn btn-yellow halfSize transition" 
+                                    @click="half = 'b'"
+                                    :class="{ active: half === 'b' }"
+                                >
+                                    B Side
+                                </div>
+                                <div
+                                    class="col-md-4 btn btn-yellow halfSize transition"
+                                    @click="half = 'w'"
+                                    :class="{ active: half === 'w' }"
+                                >
+                                    A/B SIDE
+                                </div>
+                            </div>
+                        </div>
+                    </v-row>
                     <v-row>
                         <v-col cols="4" offset="2">
                             <table class="table mb-250" v-if="half == 'w'">

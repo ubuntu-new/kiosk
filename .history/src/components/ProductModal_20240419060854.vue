@@ -5,7 +5,7 @@
                 <v-icon  @click="closeDialog" size="x-large">mdi-close</v-icon>
                 <v-card-text class="v-container"> 
                     <v-row no-gutters>
-                        <v-col cols="5">
+                        <v-col>
                             <v-sheet class="pa-2 ma-2">
                                 <v-row>
                                     <div class="backgraundi orderTitle">
@@ -80,37 +80,33 @@
                             </v-row>
                             </v-sheet>
                         </v-col>
-                        <v-col cols="7">
+                        <v-col>
                             <v-sheet class="pa-2 ma-2">
                                 <v-row>
-                                    <div class="product-size-wrapper orderTitle" style="position:relative; top:60px;">
+                                    <div class="product-size-wrapper orderTitle">
                                         <div class="row ">
                                             <div
                                                 class="col-md-4  btn1 btn-yellow pizzaSize transition"
                                                 @click="sizeBtn('s')"
                                                 :class="{ active: size === 's', btn_inactive : cheeseLoversActive }"
                                             >
-                                            <span class="settingtxt">
+                                            <p>
                                                 Small
-                                            </span>
+                                            </p>
                                             </div>
                                             <div
                                                 class="col-md-4 btn1 btn-yellow pizzaSize transition"
                                                 @click="sizeBtn('m')"
                                                 :class="{ active: size === 'm' }"
                                             >
-                                            <span class="settingtxt">
                                                 Medium
-                                                </span>
                                             </div>
                                             <div
                                                 class="col-md-4 btn1 btn-yellow pizzaSize transition"
                                                 @click="sizeBtn('xl')"
                                                 :class="{ active: size === 'xl' , btn_inactive : cheeseLoversActive}"
                                             >
-                                            <span class="settingtxt">
                                                 XL
-                                                </span>
                                         </div>
                                         </div>
                                         <div class="row">
@@ -119,18 +115,14 @@
                                                 @click="changeCrust('original')"
                                                 :class="{ active: crust === 'original' }"
                                             >
-                                            <span class="settingtxt">
                                                 Original
-                                                </span>
                                             </div>
                                             <div
                                                 class="col-md-6 btn btn-yellow crustSize transition"
                                                 @click="changeCrust('thin')"
                                                 :class="{ active: crust === 'thin' }"
                                             >
-                                            <span class="settingtxt">
                                                 Thin
-                                                </span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -139,36 +131,28 @@
                                                 @click="changeSauce('sauce')"
                                                 :class="{ active: sauce === 'sauce' }"
                                             >
-                                            <span class="settingtxt">
                                                 Original
-                                                </span>
                                             </div>
                                             <div
                                                 class="col-sm-3 btn btn-yellow sauceSize transition"
                                                 @click="changeSauce('less sauce')"
                                                 :class="{ active: sauce === 'less sauce' }"
                                             >
-                                            <span class="settingtxt">
                                                 Less Sauce
-                                                </span>
                                             </div>
                                             <div
                                                 class="col-sm-3 btn btn-yellow sauceSize transition"
                                                 @click="changeSauce('more sauce')"
                                                 :class="{ active: sauce === 'more sauce' }"
                                             >
-                                            <span class="settingtxt">
                                             Heavy Sauce
-                                            </span>
                                             </div>
                                             <div
                                                 class="col-sm-3 btn btn-yellow sauceSize transition"
                                                 @click="changeSauce('no sauce')"
                                                 :class="{ active: sauce === 'no sauce' }"
                                             >
-                                            <span class="settingtxt">
                                                 No Sauce
-                                                </span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -177,27 +161,21 @@
                                                 @click="half = 'a'"
                                                 :class="{ active: half === 'a'}"
                                             >
-                                            <span class="settingtxt">
                                                 A Side
-                                                </span>
                                             </div>
                                             <div
                                                 class="col-md-4 btn btn-yellow halfSize transition" 
                                                 @click="half = 'b'"
                                                 :class="{ active: half === 'b' }"
                                             >
-                                            <span class="settingtxt">
                                                 B Side
-                                                </span>
                                             </div>
                                             <div
                                                 class="col-md-4 btn btn-yellow halfSize transition"
                                                 @click="half = 'w'"
                                                 :class="{ active: half === 'w' }"
                                             >
-                                            <span class="settingtxt">
                                                 A/B SIDE
-                                                </span>
                                             </div>
                                         </div>
                                     </div>

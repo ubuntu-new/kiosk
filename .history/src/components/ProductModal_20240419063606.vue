@@ -80,10 +80,10 @@
                             </v-row>
                             </v-sheet>
                         </v-col>
-                        <v-col cols="7">
+                        <v-col cols="7" offset="1">
                             <v-sheet class="pa-2 ma-2">
                                 <v-row>
-                                    <div class="product-size-wrapper orderTitle" style="position:relative; top:60px;">
+                                    <div class="product-size-wrapper orderTitle">
                                         <div class="row ">
                                             <div
                                                 class="col-md-4  btn1 btn-yellow pizzaSize transition"

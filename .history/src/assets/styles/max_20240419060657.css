@@ -228,18 +228,11 @@ hr {
  }
  .pizzaSize,.crustSize, .sauceSize, .halfSize
  {
-  height: auto !important;
+  height: 100px !important;
   font-size: 20px !important;
   line-height: 24px !important;
   margin-bottom: 4px;
-  padding: 10px 0;
  }
- /* .settingtxt
- {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
- } */
  .pizzaSize.active, .crustSize.active, .sauceSize.active, .halfSize.active
  {
   height: 100px;
